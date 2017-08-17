@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.flowable.org/processdef">
+  <process id="alarmasMonedasBilletes" name="alarmasMonedasBilletes" isExecutable="true">
+    <documentation>proceso de emisión de alarmas para alertar a cajero lider y supervisor de cuando es necesario aletar al cajero lider para alimentar con mas monedas al kiosko</documentation>
+    <startEvent id="startEvent1"></startEvent>
+    <userTask id="sid-1047C053-41B3-4D05-B4F6-0BFD31DBFB3F" name="registrar alimentacion"></userTask>
+    <serviceTask id="sid-B3311A3C-2640-4343-993F-C4A8FBD83876" name="calcularSuficiencia" flowable:class="ec.nubesoft.touch.procesos.CalculadorSufuciencia"></serviceTask>
+    <endEvent id="sid-B9F9415E-6049-4BFB-9C5A-99B621364190"></endEvent>
+    <exclusiveGateway id="sid-A5916501-9D84-49BA-8AC3-39748C5C1A52" default="sid-E879A645-32C6-406F-9CBB-75B1A5B802B1"></exclusiveGateway>
+    <serviceTask id="sid-710B6769-7DA3-42FB-9BCA-F4483095AB31" name="notificar supervisor
+" flowable:type="mail">
+      <extensionElements>
+        <flowable:field name="to">
+          <flowable:expression><![CDATA[${supervisor}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="subject">
+          <flowable:expression><![CDATA[no se ha alimentado ${nombreKiosko} de ${sucursal}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="html">
+          <flowable:expression><![CDATA[Estimado supervisor:
+El kiosko ${nombreKiosko} de la sucursal ${sucursal} no ha sido alimentado con nuevas monedas y billetes, por favor atender.]]></flowable:expression>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <intermediateCatchEvent id="sid-E64E3E3B-8DD7-415B-84E8-6953C57FB7D8">
+      <timerEventDefinition>
+        <timeCycle>${ciclotiempo}</timeCycle>
+      </timerEventDefinition>
+    </intermediateCatchEvent>
+    <sequenceFlow id="sid-7ED92B65-062B-4B10-88E1-3D7F387ACDD1" sourceRef="sid-B3311A3C-2640-4343-993F-C4A8FBD83876" targetRef="sid-A5916501-9D84-49BA-8AC3-39748C5C1A52"></sequenceFlow>
+    <serviceTask id="sid-039321FC-CE43-4316-937D-FF9178AA3D31" name="notificarCajeroLider" flowable:type="mail">
+      <extensionElements>
+        <flowable:field name="to">
+          <flowable:expression><![CDATA[${cajeroLider}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="subject">
+          <flowable:expression><![CDATA[por favor alimentar al kiosko ${nombreKiosko}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="html">
+          <flowable:expression><![CDATA[Estimado colaborador:
+Es necesario proveer de monedas y billetes al kiosko ${nombreKiosko} para que pueda seguir funcionando sin problemas.
+Una vez hecho, por favor registrar su ingreso en el siguiente link ${linkAlimentacion} 
+Gracias por su colaboración.]]></flowable:expression>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="sid-75FDE47D-C7F3-4A7D-B9D8-01A892469754" sourceRef="sid-1047C053-41B3-4D05-B4F6-0BFD31DBFB3F" targetRef="sid-E64E3E3B-8DD7-415B-84E8-6953C57FB7D8"></sequenceFlow>
+    <sequenceFlow id="sid-2DBF3DF4-D6DF-4A65-A020-8B0A81FDB5E7" sourceRef="sid-E64E3E3B-8DD7-415B-84E8-6953C57FB7D8" targetRef="sid-710B6769-7DA3-42FB-9BCA-F4483095AB31"></sequenceFlow>
+    <sequenceFlow id="sid-01F66322-F47C-42E5-A490-A703662DE885" sourceRef="sid-710B6769-7DA3-42FB-9BCA-F4483095AB31" targetRef="sid-B3311A3C-2640-4343-993F-C4A8FBD83876"></sequenceFlow>
+    <sequenceFlow id="sid-C387D359-61F1-4737-8E2E-BDA3816F9946" sourceRef="sid-1047C053-41B3-4D05-B4F6-0BFD31DBFB3F" targetRef="sid-B3311A3C-2640-4343-993F-C4A8FBD83876"></sequenceFlow>
+    <sequenceFlow id="sid-229FA52D-97C9-4ED3-9447-F0E2E054DFCC" sourceRef="sid-039321FC-CE43-4316-937D-FF9178AA3D31" targetRef="sid-1047C053-41B3-4D05-B4F6-0BFD31DBFB3F"></sequenceFlow>
+    <sequenceFlow id="sid-E879A645-32C6-406F-9CBB-75B1A5B802B1" sourceRef="sid-A5916501-9D84-49BA-8AC3-39748C5C1A52" targetRef="sid-B9F9415E-6049-4BFB-9C5A-99B621364190"></sequenceFlow>
+    <sequenceFlow id="sid-3C124BAE-8286-4E6F-9D05-ADA2B5C9EFD3" sourceRef="sid-A5916501-9D84-49BA-8AC3-39748C5C1A52" targetRef="sid-039321FC-CE43-4316-937D-FF9178AA3D31">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${insatisfecho}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-7AC3FBEB-8CC8-4B25-95BE-4A017FB04A62" sourceRef="startEvent1" targetRef="sid-B3311A3C-2640-4343-993F-C4A8FBD83876"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_alarmasMonedasBilletes">
+    <bpmndi:BPMNPlane bpmnElement="alarmasMonedasBilletes" id="BPMNPlane_alarmasMonedasBilletes">
+      <bpmndi:BPMNShape bpmnElement="startEvent1" id="BPMNShape_startEvent1">
+        <omgdc:Bounds height="30.0" width="29.999999999999996" x="28.56967508607234" y="267.84837543036167"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-1047C053-41B3-4D05-B4F6-0BFD31DBFB3F" id="BPMNShape_sid-1047C053-41B3-4D05-B4F6-0BFD31DBFB3F">
+        <omgdc:Bounds height="84.0" width="173.0" x="589.0" y="330.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-B3311A3C-2640-4343-993F-C4A8FBD83876" id="BPMNShape_sid-B3311A3C-2640-4343-993F-C4A8FBD83876">
+        <omgdc:Bounds height="79.99999999999997" width="100.0" x="165.0" y="242.8483754303617"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-B9F9415E-6049-4BFB-9C5A-99B621364190" id="BPMNShape_sid-B9F9415E-6049-4BFB-9C5A-99B621364190">
+        <omgdc:Bounds height="28.0" width="28.0" x="405.0" y="315.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-A5916501-9D84-49BA-8AC3-39748C5C1A52" id="BPMNShape_sid-A5916501-9D84-49BA-8AC3-39748C5C1A52">
+        <omgdc:Bounds height="40.0" width="40.0" x="330.0" y="262.84837543036167"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-710B6769-7DA3-42FB-9BCA-F4483095AB31" id="BPMNShape_sid-710B6769-7DA3-42FB-9BCA-F4483095AB31">
+        <omgdc:Bounds height="80.00000000000001" width="100.0" x="625.5" y="85.70902525821701"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-E64E3E3B-8DD7-415B-84E8-6953C57FB7D8" id="BPMNShape_sid-E64E3E3B-8DD7-415B-84E8-6953C57FB7D8">
+        <omgdc:Bounds height="31.0" width="31.0" x="660.0" y="205.25063223001112"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-039321FC-CE43-4316-937D-FF9178AA3D31" id="BPMNShape_sid-039321FC-CE43-4316-937D-FF9178AA3D31">
+        <omgdc:Bounds height="58.0" width="170.0" x="390.0" y="165.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-229FA52D-97C9-4ED3-9447-F0E2E054DFCC" id="BPMNEdge_sid-229FA52D-97C9-4ED3-9447-F0E2E054DFCC">
+        <omgdi:waypoint x="475.0" y="223.0"></omgdi:waypoint>
+        <omgdi:waypoint x="475.0" y="270.0"></omgdi:waypoint>
+        <omgdi:waypoint x="598.0" y="270.0"></omgdi:waypoint>
+        <omgdi:waypoint x="643.5882352941177" y="330.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-3C124BAE-8286-4E6F-9D05-ADA2B5C9EFD3" id="BPMNEdge_sid-3C124BAE-8286-4E6F-9D05-ADA2B5C9EFD3">
+        <omgdi:waypoint x="350.5" y="263.34837543036167"></omgdi:waypoint>
+        <omgdi:waypoint x="350.5" y="194.0"></omgdi:waypoint>
+        <omgdi:waypoint x="390.0" y="194.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-7AC3FBEB-8CC8-4B25-95BE-4A017FB04A62" id="BPMNEdge_sid-7AC3FBEB-8CC8-4B25-95BE-4A017FB04A62">
+        <omgdi:waypoint x="56.1301985577072" y="282.84837543036167"></omgdi:waypoint>
+        <omgdi:waypoint x="165.0" y="282.84837543036167"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-C387D359-61F1-4737-8E2E-BDA3816F9946" id="BPMNEdge_sid-C387D359-61F1-4737-8E2E-BDA3816F9946">
+        <omgdi:waypoint x="589.0" y="377.0"></omgdi:waypoint>
+        <omgdi:waypoint x="215.0" y="377.0"></omgdi:waypoint>
+        <omgdi:waypoint x="215.0" y="322.84837543036167"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-2DBF3DF4-D6DF-4A65-A020-8B0A81FDB5E7" id="BPMNEdge_sid-2DBF3DF4-D6DF-4A65-A020-8B0A81FDB5E7">
+        <omgdi:waypoint x="675.9162679935457" y="205.2508513267895"></omgdi:waypoint>
+        <omgdi:waypoint x="675.7093328826456" y="165.70902525821703"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-75FDE47D-C7F3-4A7D-B9D8-01A892469754" id="BPMNEdge_sid-75FDE47D-C7F3-4A7D-B9D8-01A892469754">
+        <omgdi:waypoint x="675.639304066814" y="330.0"></omgdi:waypoint>
+        <omgdi:waypoint x="675.9469320759681" y="237.25054422337655"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-01F66322-F47C-42E5-A490-A703662DE885" id="BPMNEdge_sid-01F66322-F47C-42E5-A490-A703662DE885">
+        <omgdi:waypoint x="625.5" y="125.70902525821703"></omgdi:waypoint>
+        <omgdi:waypoint x="215.0" y="125.70902525821703"></omgdi:waypoint>
+        <omgdi:waypoint x="215.0" y="242.8483754303617"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-E879A645-32C6-406F-9CBB-75B1A5B802B1" id="BPMNEdge_sid-E879A645-32C6-406F-9CBB-75B1A5B802B1">
+        <omgdi:waypoint x="350.5" y="302.34837543036167"></omgdi:waypoint>
+        <omgdi:waypoint x="350.5" y="329.0"></omgdi:waypoint>
+        <omgdi:waypoint x="405.0" y="329.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-7ED92B65-062B-4B10-88E1-3D7F387ACDD1" id="BPMNEdge_sid-7ED92B65-062B-4B10-88E1-3D7F387ACDD1">
+        <omgdi:waypoint x="265.0" y="282.84837543036167"></omgdi:waypoint>
+        <omgdi:waypoint x="330.0" y="282.84837543036167"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
