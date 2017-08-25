@@ -39,23 +39,57 @@
     		<version>7.0</version>
     		<scope>provided</scope>
 		</dependency>		
+
+		<!-- https://mvnrepository.com/artifact/org.zkoss.zk/zk -->
+		<dependency>
+		    <groupId>org.zkoss.zk</groupId>
+		    <artifactId>zk</artifactId>
+		    <version>6.5.3</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.zkoss.zk/zul -->
+		<dependency>
+		    <groupId>org.zkoss.zk</groupId>
+		    <artifactId>zul</artifactId>
+		    <version>6.5.3</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.zkoss.zk/zkplus -->
+		<dependency>
+		    <groupId>org.zkoss.zk</groupId>
+		    <artifactId>zkplus</artifactId>
+		    <version>6.5.3</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.zkoss.zk/zhtml -->
+		<dependency>
+		    <groupId>org.zkoss.zk</groupId>
+		    <artifactId>zhtml</artifactId>
+		    <version>6.5.3</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.zkoss.zk/zkbind -->
+		<dependency>
+		    <groupId>org.zkoss.zk</groupId>
+		    <artifactId>zkbind</artifactId>
+		    <version>6.5.3</version>
+		</dependency>
+
 	</dependencies>	
 	
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
+
 	<build>
-	<finalName>kanutoprocess</finalName>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-war-plugin</artifactId>
-            <version>2.6</version>
-            <configuration>
-                <failOnMissingWebXml>false</failOnMissingWebXml>
-            </configuration>
-        </plugin>
-    </plugins>
-</build>
+		<finalName>kanutoprocess</finalName>
+	    <plugins>
+	        <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-war-plugin</artifactId>
+	            <version>2.6</version>
+	            <configuration>
+	                <failOnMissingWebXml>false</failOnMissingWebXml>
+	            </configuration>
+	        </plugin>
+	    </plugins>
+	</build>
+
 </project>
