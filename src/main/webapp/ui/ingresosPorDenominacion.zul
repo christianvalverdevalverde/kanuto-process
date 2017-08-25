@@ -1,0 +1,55 @@
+<zk>
+	<window title="Ingresos de dinero por denominación" border="normal" width="800px" height="600px">
+	    <grid>
+	        <auxhead>
+	            <auxheader colspan="3" label="Kiosko Alborada" />
+	        </auxhead>
+	        <columns>
+	            <column label="Denominación" align="center"/>
+	            <column label="Cantidad" align="center"/>
+	            <column label="Total" align="center"/>
+	        </columns>
+			<rows>
+				<row>
+					<label value="Monedas de 1 centavo"/>
+				</row>
+				<row>
+					<label value="Monedas de 5 centavos"/>
+				</row>
+				<row>
+					<label value="Monedas de 10 centavos"/>
+				</row>
+				<row>
+					<label value="Monedas de 25 centavos"/>
+				</row>
+				<row>
+					<label value="Monedas de 50 centavos"/>
+				</row>
+				<row>
+					<label value="Monedas de 1 dólar"/>
+				</row>
+				<row>
+					<label value="Billetes de 1 dólar"/>
+				</row>
+				<row>
+					<label value="Billetes de 2 dólares"/>
+				</row>
+				<row>
+					<label value="Billetes de 5 dólares"/>
+				</row>
+				<row>
+					<label value="Billetes de 10 dólares"/>
+				</row>
+				<row>
+					<label value="Billetes de 20 dólares"/>
+				</row>
+				<row>
+					<label value="Billetes de 50 dólares"/>
+				</row>
+				<row>
+					<label value="Billetes de 100 dólares"/>
+				</row>
+			</rows>
+		</grid>
+	</window>
+</zk>
