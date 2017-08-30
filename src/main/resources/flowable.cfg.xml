@@ -4,10 +4,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
 
   <bean id="processEngineConfiguration" class="org.flowable.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
-    <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/kioskoprocess" />
+    <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/kanutoprocessdb" />
     <property name="jdbcDriver" value="org.postgresql.Driver" />
-    <property name="jdbcUsername" value="chrisvv" />
-    <property name="jdbcPassword" value="palita" />
+    <property name="jdbcUsername" value="carper" />
+    <property name="jdbcPassword" value="123" />
     <property name="databaseSchemaUpdate" value="true" />
     
   </bean>
