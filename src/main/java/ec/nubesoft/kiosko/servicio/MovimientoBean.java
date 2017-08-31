@@ -8,7 +8,6 @@ import javax.validation.constraints.NotNull;
 
 /**
  * Clase de movimientos para consumo dw WS
- * @author carper
  * 2017-08-30
  */
 public class MovimientoBean implements Serializable {
