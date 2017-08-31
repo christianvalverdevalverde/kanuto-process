@@ -26,9 +26,12 @@ public class ConsumerService{
 
 		try{
 			Client client       = ClientBuilder.newClient();
-			WebTarget webTarget = client.target( Configuracion.obtenerUrlStandard(Configuracion.getPathpostMovimientos()) );
+			String url          = Configuracion.obtenerUrlStandard(Configuracion.getPathpostMovimientos());
+			WebTarget webTarget = client.target( url );
 			Response response   = webTarget.request(MediaType.APPLICATION_JSON).post(Entity.entity(payload,MediaType.APPLICATION_JSON));
 			valor               = response.getStatus();
+
+			System.out.println(url);
 
 			if ( response.getStatus()>=200 && response.getStatus()<300 )
 				Logger.getLogger(ConsumerService.class.getCanonicalName()).info("Enviado correctamente");
