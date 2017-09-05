@@ -12,42 +12,68 @@
 			<rows>
 				<row>
 					<label value="Monedas de 1 centavo"/>
+					<intbox id="txtMoneda1" constraint="no negative" width="150px" />
+					<label id="lblMoneda1"/>
 				</row>
 				<row>
 					<label value="Monedas de 5 centavos"/>
+					<intbox id="txtMoneda5" constraint="no negative" width="150px" />
+					<label id="lblMoneda5"/>
 				</row>
 				<row>
 					<label value="Monedas de 10 centavos"/>
+					<intbox id="txtMoneda10" constraint="no negative" width="150px" />
+					<label id="lblMoneda10"/>
 				</row>
 				<row>
 					<label value="Monedas de 25 centavos"/>
+					<intbox id="txtMoneda25" constraint="no negative" width="150px" />
+					<label id="lblMoneda25"/>
 				</row>
 				<row>
 					<label value="Monedas de 50 centavos"/>
+					<intbox id="txtMoneda50" constraint="no negative" width="150px" />
+					<label id="lblMoneda50"/>
 				</row>
 				<row>
 					<label value="Monedas de 1 dólar"/>
+					<intbox id="txtMoneda100" constraint="no negative" width="150px" />
+					<label id="lblMoneda100"/>
 				</row>
 				<row>
 					<label value="Billetes de 1 dólar"/>
+					<intbox id="txtBillete1" constraint="no negative" width="150px" />
+					<label id="lblBillete1"/>
 				</row>
 				<row>
 					<label value="Billetes de 2 dólares"/>
+					<intbox id="txtBillete2" constraint="no negative" width="150px" />
+					<label id="lblBillete2"/>
 				</row>
 				<row>
 					<label value="Billetes de 5 dólares"/>
+					<intbox id="txtBillete5" constraint="no negative" width="150px" />
+					<label id="lblBillete5"/>
 				</row>
 				<row>
 					<label value="Billetes de 10 dólares"/>
+					<intbox id="txtBillete10" constraint="no negative" width="150px" />
+					<label id="lblBillete10"/>
 				</row>
 				<row>
 					<label value="Billetes de 20 dólares"/>
+					<intbox id="txtBillete20" constraint="no negative" width="150px" />
+					<label id="lblBillete20"/>
 				</row>
 				<row>
 					<label value="Billetes de 50 dólares"/>
+					<intbox id="txtBillete50" constraint="no negative" width="150px" />
+					<label id="lblBillete50"/>
 				</row>
 				<row>
 					<label value="Billetes de 100 dólares"/>
+					<intbox id="txtBillete100" constraint="no negative" width="150px" />
+					<label id="lblBillete100"/>
 				</row>
 			</rows>
 		</grid>
