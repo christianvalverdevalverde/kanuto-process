@@ -12,7 +12,7 @@
 			<rows>
 				<row>
 					<label value="Monedas de 1 centavo"/>
-					<intbox id="txtMoneda1" constraint="no negative" width="150px" />
+					<intbox id="txtMoneda1" constraint="no negative" width="150px" onBlur='alert("you blur");' />
 					<label id="lblMoneda1"/>
 				</row>
 				<row>
