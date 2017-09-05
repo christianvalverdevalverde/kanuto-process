@@ -1,5 +1,5 @@
 <zk>
-	<window title="Ingresos de dinero por denominación" border="normal" width="800px" height="600px">
+	<window title="Ingresos de dinero por denominación" border="normal" apply="ec.nubesoft.kiosko.ui.MovimientoDineroPorDenominacion" width="800px" height="600px">
 	    <grid>
 	        <auxhead>
 	            <auxheader colspan="3" label="Kiosko Alborada" />
