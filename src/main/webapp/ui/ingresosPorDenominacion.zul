@@ -2,17 +2,24 @@
 	<window id="win" title="Ingresos de dinero por denominación" border="normal" apply="ec.nubesoft.kiosko.ui.MovimientoDineroPorDenominacion" width="800px" height="600px">
 
 		<zscript>
+
+			import java.math.BigDecimal;
+			import java.math.RoundingMode;
+
 			void calcular(Component comp){
-				String sufijoId = comp.getId().substring(3);
-				System.out.println(sufijoId);
+				String cantidadCentavos = comp.getId().substring(3);
+				//System.out.println(cantidadCentavos);
 
-				Double valor = new Double(sufijoId).intValue() * 0.01;
-				System.out.println(valor);
+				BigDecimal valor = new BigDecimal(cantidadCentavos).multiply(new BigDecimal(0.01));
+				//System.out.println(valor);
 
-				Label lbl = (Label)win.getFellow("lbl"+sufijoId);
+				Label lbl = (Label)win.getFellow("lbl"+cantidadCentavos);
 
-				int cantidad = new Integer(comp.getValue()).intValue();
-				lbl.setValue("" + valor*cantidad );
+				//int cantidad = new Integer(comp.getValue()).intValue();
+				int cantidad = ec.nubesoft.kiosko.util.Configuracion.parseToInt(comp.getText());
+				BigDecimal total = new BigDecimal(cantidad).multiply(valor).setScale(2, RoundingMode.HALF_UP);
+
+				lbl.setValue(total.toString());
 			}
 		</zscript>
 
