@@ -9,6 +9,7 @@ import java.util.Properties;
  * Clase Configuracion siguiendo el patrón Singleton
  * @author carper
  * 2017-08-28, 31
+ * 2017-09-07
  */ 
 public class Configuracion {
 	
@@ -77,4 +78,22 @@ public class Configuracion {
 		
 		return sb.toString();
 	}
+
+	/**
+	 * Convierte un String a tipo primitivo int
+	 * 
+	 * @param valor
+	 *            (String: Cadena que representa el valor a convetir)
+	 * @return int equivalente de la cadena
+	 */
+	public static int parseToInt(String valor) {
+		int numero = 0;
+		try {
+			numero = Integer.parseInt(valor);
+		} catch (Exception e) {
+			numero = 0;
+		}
+		return numero;
+	}
+
 }
