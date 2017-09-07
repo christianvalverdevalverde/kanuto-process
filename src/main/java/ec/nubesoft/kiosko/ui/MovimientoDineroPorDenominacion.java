@@ -1,5 +1,6 @@
 package ec.nubesoft.kiosko.ui;
 
+import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Intbox;
 import org.zkoss.zul.Label;
 import org.zkoss.zk.ui.Component;
@@ -9,15 +10,19 @@ import org.zkoss.zk.ui.Component;
  * @author carper
  * 2017-09-04
  */ 
-public class MovimientoDineroPorDenominacion{
+public class MovimientoDineroPorDenominacion extends GenericForwardComposer {
 
 	public void doAfterCompose(Component comp) throws Exception {
 	}
 
-	public void calcular(Intbox campo, int valorCentavos, Label etiqueta){
+	public void calcular(Component comp){
+
+		/*
 		int denominacion = campo.intValue();
 		int total = denominacion * valorCentavos;
 		etiqueta.setValue(""+total);
+		*/
+		System.out.println(comp.getId());
 	}
 		
 }
