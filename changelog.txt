@@ -1,0 +1,10 @@
+URL
+	http://localhost:8080/kanuto-process/ui/ingresosPorDenominacion.zul
+
+Configuración de entorno
+
+	/home/knoppix/proyectos/nubesoft/config/changelogNubesoft.txt
+
+	* Java:
+		export JAVA_HOME=/home/knoppix/local/jdk1.8.0_131
+		export PATH=/mnt-system/local/apache-maven-3.3.9/bin:$PATH
