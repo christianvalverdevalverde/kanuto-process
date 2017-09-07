@@ -12,6 +12,8 @@ import org.zkoss.zk.ui.Component;
  */ 
 public class MovimientoDineroPorDenominacion extends GenericForwardComposer {
 
+	private Label lblParametro;
+
 	public void doAfterCompose(Component comp) throws Exception {
 	}
 
