@@ -15,14 +15,4 @@ public class MovimientoDineroPorDenominacion extends GenericForwardComposer {
 	public void doAfterCompose(Component comp) throws Exception {
 	}
 
-	public void calcular(Component comp){
-
-		/*
-		int denominacion = campo.intValue();
-		int total = denominacion * valorCentavos;
-		etiqueta.setValue(""+total);
-		*/
-		System.out.println(comp.getId());
-	}
-		
 }

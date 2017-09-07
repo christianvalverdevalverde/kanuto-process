@@ -1,9 +1,18 @@
 <zk>
-	<window title="Ingresos de dinero por denominación" border="normal" apply="ec.nubesoft.kiosko.ui.MovimientoDineroPorDenominacion" width="800px" height="600px">
+	<window id="win" title="Ingresos de dinero por denominación" border="normal" apply="ec.nubesoft.kiosko.ui.MovimientoDineroPorDenominacion" width="800px" height="600px">
 
 		<zscript>
 			void calcular(Component comp){
-				System.out.println(comp.getId());
+				String sufijoId = comp.getId().substring(3);
+				System.out.println(sufijoId);
+
+				Double valor = new Double(sufijoId).intValue() * 0.01;
+				System.out.println(valor);
+
+				Label lbl = (Label)win.getFellow("lbl"+sufijoId);
+
+				int cantidad = new Integer(comp.getValue()).intValue();
+				lbl.setValue("" + valor*cantidad );
 			}
 		</zscript>
 
@@ -19,68 +28,68 @@
 			<rows>
 				<row>
 					<label value="Monedas de 1 centavo"/>
-					<intbox id="txtMoneda1" constraint="no negative" width="150px" onBlur='calcular(self)' />
-					<label id="lblMoneda1"/>
+					<intbox id="txt1" constraint="no negative" width="150px" onBlur='calcular(self)' />
+					<label id="lbl1"/>
 				</row>
 				<row>
 					<label value="Monedas de 5 centavos"/>
-					<intbox id="txtMoneda5" constraint="no negative" width="150px" onBlur='calcular(self)' />
-					<label id="lblMoneda5"/>
+					<intbox id="txt5" constraint="no negative" width="150px" onBlur='calcular(self)' />
+					<label id="lbl5"/>
 				</row>
 				<row>
 					<label value="Monedas de 10 centavos"/>
-					<intbox id="txtMoneda10" constraint="no negative" width="150px" onBlur='calcular(self)' />
-					<label id="lblMoneda10"/>
+					<intbox id="txt10" constraint="no negative" width="150px" onBlur='calcular(self)' />
+					<label id="lbl10"/>
 				</row>
 				<row>
 					<label value="Monedas de 25 centavos"/>
-					<intbox id="txtMoneda25" constraint="no negative" width="150px" onBlur='calcular(self)' />
-					<label id="lblMoneda25"/>
+					<intbox id="txt25" constraint="no negative" width="150px" onBlur='calcular(self)' />
+					<label id="lbl25"/>
 				</row>
 				<row>
 					<label value="Monedas de 50 centavos"/>
-					<intbox id="txtMoneda50" constraint="no negative" width="150px" onBlur='calcular(self)' />
-					<label id="lblMoneda50"/>
+					<intbox id="txt50" constraint="no negative" width="150px" onBlur='calcular(self)' />
+					<label id="lbl50"/>
 				</row>
 				<row>
 					<label value="Monedas de 1 dólar"/>
-					<intbox id="txtMoneda100" constraint="no negative" width="150px" onBlur='calcular(self)' />
-					<label id="lblMoneda100"/>
+					<intbox id="txt100" constraint="no negative" width="150px" onBlur='calcular(self)' />
+					<label id="lbl100"/>
 				</row>
 				<row>
 					<label value="Billetes de 1 dólar"/>
-					<intbox id="txtBillete1" constraint="no negative" width="150px" onBlur='calcular(self)' />
-					<label id="lblBillete1"/>
+					<intbox id="txt100.0" constraint="no negative" width="150px" onBlur='calcular(self)' />
+					<label id="lbl100.0"/>
 				</row>
 				<row>
 					<label value="Billetes de 2 dólares"/>
-					<intbox id="txtBillete2" constraint="no negative" width="150px" onBlur='calcular(self)' />
-					<label id="lblBillete2"/>
+					<intbox id="txt200" constraint="no negative" width="150px" onBlur='calcular(self)' />
+					<label id="lbl200"/>
 				</row>
 				<row>
 					<label value="Billetes de 5 dólares"/>
-					<intbox id="txtBillete5" constraint="no negative" width="150px" onBlur='calcular(self)' />
-					<label id="lblBillete5"/>
+					<intbox id="txt500" constraint="no negative" width="150px" onBlur='calcular(self)' />
+					<label id="lbl500"/>
 				</row>
 				<row>
 					<label value="Billetes de 10 dólares"/>
-					<intbox id="txtBillete10" constraint="no negative" width="150px" />
-					<label id="lblBillete10"/>
+					<intbox id="txt1000" constraint="no negative" width="150px" onBlur='calcular(self)' />
+					<label id="lbl1000"/>
 				</row>
 				<row>
 					<label value="Billetes de 20 dólares"/>
-					<intbox id="txtBillete20" constraint="no negative" width="150px" />
-					<label id="lblBillete20"/>
+					<intbox id="txt2000" constraint="no negative" width="150px" onBlur='calcular(self)' />
+					<label id="lbl2000"/>
 				</row>
 				<row>
 					<label value="Billetes de 50 dólares"/>
-					<intbox id="txtBillete50" constraint="no negative" width="150px" />
-					<label id="lblBillete50"/>
+					<intbox id="txt5000" constraint="no negative" width="150px" onBlur='calcular(self)' />
+					<label id="lbl5000"/>
 				</row>
 				<row>
 					<label value="Billetes de 100 dólares"/>
-					<intbox id="txtBillete100" constraint="no negative" width="150px" onBlur='alert("you blur");' />
-					<label id="lblBillete100"/>
+					<intbox id="txt10000" constraint="no negative" width="150px" onBlur='calcular(self)' />
+					<label id="lbl10000"/>
 				</row>
 			</rows>
 		</grid>
