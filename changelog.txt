@@ -1,4 +1,6 @@
 URL
+	http://localhost:8080/kanuto-process/ui/movimientoDineroPorDenominacion.zul
+	(por defecto es Ingreso)
 	http://localhost:8080/kanuto-process/ui/movimientoDineroPorDenominacion.zul?tipo=I
 	http://localhost:8080/kanuto-process/ui/movimientoDineroPorDenominacion.zul?tipo=E
 
