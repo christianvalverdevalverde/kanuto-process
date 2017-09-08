@@ -103,7 +103,7 @@
 				<configuration>
 					<scanIntervalSeconds>10</scanIntervalSeconds>
 					<webApp>
-					     <contextPath>/kanuto-process</contextPath>
+					     <contextPath>/kanutoprocess</contextPath>
 					</webApp>
 				</configuration>	
 			</plugin>
