@@ -44,6 +44,7 @@ public class MovimientoDineroPorDenominacion extends GenericForwardComposer {
 
 		super.doAfterCompose(comp);
 
+		/*
 		try{
 			tipo = lblParametro.getValue();
 		}catch(Exception e){
@@ -51,7 +52,10 @@ public class MovimientoDineroPorDenominacion extends GenericForwardComposer {
 		}finally{
 			tipo = "I";
 		}
-
+		*/
+		
+		tipo = lblParametro.getValue();
+		//System.out.println(tipo);
 		win.setTitle( (tipo.equals("I") ? "Ingreso": "Egreso") + " " + win.getTitle() );  
 	}
 
