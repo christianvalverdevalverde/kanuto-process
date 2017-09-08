@@ -58,20 +58,22 @@ public class MovimientoDineroPorDenominacion extends GenericForwardComposer {
 	public void onClick$btnProcesar(){
 		MovimientoBean m = new MovimientoBean();
 
-		m.setMoneda_01 	 (new BigDecimal( lbl1.  	getValue() ));
-		m.setMoneda_05 	 (new BigDecimal( lbl5.  	getValue() ));
-		m.setMoneda_10 	 (new BigDecimal( lbl10. 	getValue() ));
-		m.setMoneda_25 	 (new BigDecimal( lbl25. 	getValue() ));
-		m.setMoneda_50 	 (new BigDecimal( lbl50. 	getValue() ));
-		m.setMoneda_100	 (new BigDecimal( lbl100.	getValue() ));
+		m.setMoneda_01 	 (new BigDecimal( (tipo.equals("E") ? "-": "") + lbl1.  	getValue() ));
+		m.setMoneda_05 	 (new BigDecimal( (tipo.equals("E") ? "-": "") + lbl5.  	getValue() ));
+		m.setMoneda_10 	 (new BigDecimal( (tipo.equals("E") ? "-": "") + lbl10. 	getValue() ));
+		m.setMoneda_25 	 (new BigDecimal( (tipo.equals("E") ? "-": "") + lbl25. 	getValue() ));
+		m.setMoneda_50 	 (new BigDecimal( (tipo.equals("E") ? "-": "") + lbl50. 	getValue() ));
+		m.setMoneda_100	 (new BigDecimal( (tipo.equals("E") ? "-": "") + lbl100.	getValue() ));
 
-		m.setBillete_01  (new BigDecimal( lbl0100.  getValue() ));
-		m.setBillete_02  (new BigDecimal( lbl200.  	getValue() ));
-		m.setBillete_05  (new BigDecimal( lbl500. 	getValue() ));
-		m.setBillete_10  (new BigDecimal( lbl1000.  getValue() ));
-		m.setBillete_20  (new BigDecimal( lbl2000.  getValue() ));
-		m.setBillete_50  (new BigDecimal( lbl5000.  getValue() ));
-		m.setBillete_100 (new BigDecimal( lbl10000. getValue() ));
+		m.setBillete_01  (new BigDecimal( (tipo.equals("E") ? "-": "") + lbl0100.	getValue() ));
+		m.setBillete_02  (new BigDecimal( (tipo.equals("E") ? "-": "") + lbl200.  	getValue() ));
+		m.setBillete_05  (new BigDecimal( (tipo.equals("E") ? "-": "") + lbl500. 	getValue() ));
+		m.setBillete_10  (new BigDecimal( (tipo.equals("E") ? "-": "") + lbl1000. 	getValue() ));
+		m.setBillete_20  (new BigDecimal( (tipo.equals("E") ? "-": "") + lbl2000.	getValue() ));
+		m.setBillete_50  (new BigDecimal( (tipo.equals("E") ? "-": "") + lbl5000.	getValue() ));
+		m.setBillete_100 (new BigDecimal( (tipo.equals("E") ? "-": "") + lbl10000.	getValue() ));
+
+		//(tipo.equals("E") ? "-": "")
 
 		m.setMac("AA-BB-CC-DD-EE");
 		m.setNumeroOrden(0);  //usa cero para movimientos manuales.
